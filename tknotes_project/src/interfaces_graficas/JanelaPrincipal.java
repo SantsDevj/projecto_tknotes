@@ -9,7 +9,7 @@ public class JanelaPrincipal extends JFrame{
     public JanelaPrincipal(){
         ImageIcon image = new ImageIcon("recursos_graficos/logo/logo_tknotes.png");
 
-        this.setSize(1920, 1080);
+        this.setSize(1280, 800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
         this.setTitle("TKNotes");

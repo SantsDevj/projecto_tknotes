@@ -3,7 +3,6 @@ package dao_classes;
 import java.sql.*;
 
 public class TarefaDAO  implements InterfaceDAO{
-
     private Connection connect;
     
     //Criando a conexão com a Base de Dados através do Constructor
@@ -38,7 +37,7 @@ public class TarefaDAO  implements InterfaceDAO{
 
     @Override
     public void marcarComoCuncluidaDAO() {
-        
+
     }
 
     @Override

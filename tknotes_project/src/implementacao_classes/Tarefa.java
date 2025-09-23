@@ -1,6 +1,8 @@
 package implementacao_classes;
 import java.util.Date;
 
+import dao_classes.TarefaDAO;
+
 public class Tarefa {
 
     //Atributos da Classe
@@ -48,7 +50,7 @@ public class Tarefa {
     
     //Métodos da Classe
     public boolean isConcluida() {
-        return concluida;
+        return false;
     }
 
     public void setConcluida(boolean status) {
