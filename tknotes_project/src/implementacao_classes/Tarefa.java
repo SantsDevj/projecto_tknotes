@@ -1,50 +1,66 @@
+package implementacao_classes;
 import java.util.Date;
+
+import dao_classes.TarefaDAO;
 
 public class Tarefa {
 
     //Atributos da Classe
     private int id;
     private String titulo;
+    private String descricao;
     private Date data_Vencimento;
     private String categoria;
     private PrioridadeTarefa prioridade;
-
-    //Getters e Setters
     private boolean concluida;
-    public int getId() {
-        return id;
+
+    //Getters e Setters Específicos uns Atributos
+
+    //Descrição
+    public String getDescricao() {
+        return descricao;
     }
-    public void setId(int id) {
-        this.id = id;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
-    public String getTitulo() {
-        return titulo;
-    }
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
+
+    //Data de Vencimento
     public Date getData_Vencimento() {
         return data_Vencimento;
     }
     public void setData_Vencimento(Date data_Vencimento) {
         this.data_Vencimento = data_Vencimento;
     }
+
+    //categoria
     public String getCategoria() {
         return categoria;
     }
     public void setCategoria(String categoria) {
         this.categoria = categoria;
     }
+
+    //Prioridade
     public PrioridadeTarefa getPrioridade() {
         return prioridade;
     }
     public void setPrioridade(PrioridadeTarefa prioridade) {
         this.prioridade = prioridade;
     }
+    
+    //Métodos da Classe
     public boolean isConcluida() {
-        return concluida;
+        return false;
     }
-    public void setConcluida(boolean concluida) {
-        this.concluida = concluida;
+
+    public void setConcluida(boolean status) {
+        this.concluida = status;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 }
