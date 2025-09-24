@@ -52,8 +52,16 @@ public class TelaCadastro extends JanelaPrincipal{
         //Botão para entrar
         JButton loginButton = new JButton("Entrar");
         loginButton.setSize(new Dimension(200,40));
-        loginButton.setBackground(new Color(0x007BFF));
+        loginButton.setBackground(new Color(0x17A2B8));
         loginButton.setFocusable(false); //eleimina oo foco do botão
+
+        //Adicionando evento neste botão
+        loginButton.addActionListener(e ->{
+            if (e.getSource() == loginButton) {
+                TelaLogin login = new TelaLogin();
+                login.tornarVisivel();
+            }
+        });
         
         //Adicionando a imagem no painel
         panel1.add(welcomelabel);
@@ -69,7 +77,7 @@ public class TelaCadastro extends JanelaPrincipal{
         
         //Defindo as dimensões dos painéis
         panel2.setPreferredSize(new Dimension(800,100));
-        panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS)); //Alinha verticalmemnte os componentes
+        //panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS)); //Alinha verticalmemnte os componentes
 
         //Título para Criar a conta
         JLabel titlelabel = new JLabel("Crie uma Conta");
@@ -83,7 +91,7 @@ public class TelaCadastro extends JanelaPrincipal{
         namepanel.setBackground(Color.WHITE);
         
         //preparando o campo para nome
-        JTextField namTextField = new JTextField("  Nome");
+        JTextField namTextField = new JTextField("Nome");
         namTextField.setPreferredSize(new Dimension(300,40));
         namTextField.setForeground(Color.GRAY);
         namTextField.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1, true)); //serve para que a borda esteja arredondada
@@ -96,7 +104,7 @@ public class TelaCadastro extends JanelaPrincipal{
         emailpanel.setBackground(Color.WHITE);
         
         //preparando o campo para email
-        JTextField emailTextField = new JTextField("    Email");
+        JTextField emailTextField = new JTextField("Email");
         emailTextField.setPreferredSize(new Dimension(300,40));
         emailTextField.setForeground(Color.GRAY);
         emailTextField.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1, true)); //serve para que a borda esteja arredondada
@@ -108,7 +116,7 @@ public class TelaCadastro extends JanelaPrincipal{
         passpanel.setBackground(Color.WHITE);
         
         //preparando o campo para palavra-passe
-        JTextField passTextField = new JTextField(" Senha");
+        JTextField passTextField = new JTextField("Senha");
         passTextField.setPreferredSize(new Dimension(300,40));
         passTextField.setForeground(Color.GRAY);
         passTextField.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1, true)); //serve para que a borda esteja arredondada
