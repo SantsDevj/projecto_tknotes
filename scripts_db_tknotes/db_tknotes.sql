@@ -17,7 +17,7 @@ primary key(id_tarefa)
 
 create table usuario(
 id_usuario integer primary key auto_increment,
-nome_usuario varchar(30) unique,
+nome_usuario varchar(100) unique,
 senha varchar(8)
 );
 

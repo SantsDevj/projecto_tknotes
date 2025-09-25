@@ -2,18 +2,7 @@ package dao_classes;
 
 import java.sql.*;
 
-public class TarefaDAO  implements InterfaceDAO{
-    private Connection connect;
-    
-    //Criando a conexão com a Base de Dados através do Constructor
-    public TarefaDAO(){
-        try {
-            this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/tknotes", "root", "");
-            System.out.println("Conexão feita com sucesso!");
-        } catch (SQLException e) {
-            System.out.println("Erro ao estabelecer conexão com a base de Dados");
-        }
-    }
+public class TarefaDAO extends ConexaoDB implements InterfaceDAO{
     
     //Métodos da Classe de Manipulação de Dados
     @Override
@@ -49,6 +38,9 @@ public class TarefaDAO  implements InterfaceDAO{
     public void filtrarTarefas() {
         
     }
-    
+
+    public static void main(String[] args) {
+        TarefaDAO tarefa = new TarefaDAO();
+    }
     
 }

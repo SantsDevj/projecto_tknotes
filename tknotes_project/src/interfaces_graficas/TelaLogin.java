@@ -44,6 +44,7 @@ public class TelaLogin extends JanelaPrincipal{
             if (e.getSource() == loginButton) {
                 TelaCadastro telacad = new TelaCadastro();
                 telacad.tornarVisivel();
+                this.dispose();
             }
         });
         

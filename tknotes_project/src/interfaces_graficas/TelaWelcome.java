@@ -70,6 +70,7 @@ public class TelaWelcome extends JanelaPrincipal {
             if (e.getSource() == contButton) {
                 TelaCadastro telacad = new TelaCadastro();
                 telacad.setVisible(true);
+                this.dispose();
             }
         });
         

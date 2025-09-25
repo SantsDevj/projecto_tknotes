@@ -6,6 +6,7 @@ import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -18,8 +19,12 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.Label;
 
-public class TelaCadastro extends JanelaPrincipal{
+//Importando a Classe Usuário 
+import implementacao_classes.*;
 
+public class TelaCadastro extends JanelaPrincipal{
+    
+    @SuppressWarnings("static-access")
     //Constructor para iniciar a interface gráfica
     public TelaCadastro(){
         /*--------(Configurando os Painéis)------ */
@@ -60,7 +65,9 @@ public class TelaCadastro extends JanelaPrincipal{
             if (e.getSource() == loginButton) {
                 TelaLogin login = new TelaLogin();
                 login.tornarVisivel();
+                this.dispose();
             }
+            
         });
         
         //Adicionando a imagem no painel
@@ -95,6 +102,28 @@ public class TelaCadastro extends JanelaPrincipal{
         namTextField.setPreferredSize(new Dimension(300,40));
         namTextField.setForeground(Color.GRAY);
         namTextField.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1, true)); //serve para que a borda esteja arredondada
+
+        //Melhorando a experiência de usuário
+
+        namTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent evt){
+
+                if (namTextField.getText().equals("Nome")) {
+                    namTextField.setText("");
+                    namTextField.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(java.awt.event.FocusEvent evt){
+                if (namTextField.getText().isEmpty()) {
+                    namTextField.setText("Nome");
+                    namTextField.setForeground(Color.GRAY);
+                }
+            }
+        });
+
         //Adicionando este campo no namepanel
         namepanel.add(namTextField);
 
@@ -108,6 +137,27 @@ public class TelaCadastro extends JanelaPrincipal{
         emailTextField.setPreferredSize(new Dimension(300,40));
         emailTextField.setForeground(Color.GRAY);
         emailTextField.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1, true)); //serve para que a borda esteja arredondada
+
+        //Melhorando a experiência de usuário
+
+        emailTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent evt){
+
+                if (emailTextField.getText().equals("Email")) {
+                    emailTextField.setText("");
+                    emailTextField.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(java.awt.event.FocusEvent evt){
+                if (emailTextField.getText().isEmpty()) {
+                    emailTextField.setText("Email");
+                    emailTextField.setForeground(Color.GRAY);
+                }
+            }
+        });
         emailpanel.add(emailTextField);
 
         //Campo para palavra-passe
@@ -120,6 +170,27 @@ public class TelaCadastro extends JanelaPrincipal{
         passTextField.setPreferredSize(new Dimension(300,40));
         passTextField.setForeground(Color.GRAY);
         passTextField.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1, true)); //serve para que a borda esteja arredondada
+
+        //Melhorando a experiência de usuário
+
+        passTextField.addFocusListener(new java.awt.event.FocusAdapter() {
+            @Override
+            public void focusGained(java.awt.event.FocusEvent evt){
+
+                if (passTextField.getText().equals("Senha")) {
+                    passTextField.setText("");
+                    passTextField.setForeground(Color.BLACK);
+                }
+            }
+
+            @Override
+            public void focusLost(java.awt.event.FocusEvent evt){
+                if (passTextField.getText().isEmpty()) {
+                    passTextField.setText("Senha");
+                    passTextField.setForeground(Color.GRAY);
+                }
+            }
+        });
         passpanel.add(passTextField);
 
         //Configurando Botão para cadastrar
@@ -129,6 +200,87 @@ public class TelaCadastro extends JanelaPrincipal{
         regbutton.setForeground(Color.WHITE);
         regbutton.setFocusable(false);
 
+        //Configurando o evento do botão cadastrar
+
+        regbutton.addActionListener(e ->{
+
+            
+            //Obtendo as fontes de cada um dos campos (nome, email e senha)
+            
+            String nomeFonte = namTextField.getText().trim();
+            String emailFonte = emailTextField.getText().trim();
+            String passFonte = passTextField.getText().trim();
+            
+            //usando a String Builder para Armazenar os Erros
+            
+            StringBuilder msgError = new StringBuilder();
+            
+            //Usando uma flag para controlar erros
+            boolean isValido = true;
+            
+            // --------INICIAR VALIDAÇÃO---------
+            
+            
+            //Verificar se os campos estão vazios
+            
+            if (nomeFonte.isEmpty() || nomeFonte.equals("Nome")) {
+                msgError.append("- O campo Nome não pode estar vazio.\n");
+                isValido = false;
+            }
+            
+            if (emailFonte.isEmpty() || emailFonte.equals("Email")) {
+                msgError.append("- O campo Email não pode estar vazio.\n");
+                isValido = false;
+            }
+            
+            if (passFonte.isEmpty() || passFonte.equals("Senha")) {
+                msgError.append("- O campo Senha não pode estar vazio.\n");
+                isValido = false;
+            }
+            
+            //Se os campos não estiverem vazios
+            
+            if (isValido) {
+                
+                //validar nome
+                if (nomeFonte.length() > 100) {
+                    msgError.append("- O Nome não pode ter mais de 100 caracteres.\n");
+                    isValido = false;   
+                }
+                
+                //validar email
+                if (!emailFonte.contains("@") || !emailFonte.contains(".")) {
+                    msgError.append("- O Email é inválido.\n");
+                    isValido = false;
+                }
+                
+                //Validar senha
+                if (passFonte.length() < 6 || passFonte.length() > 8) {
+                    msgError.append("- A Senha deve ter no mínimo entre 6 a 8 caracteres");
+                    isValido = false;
+                }
+            }
+            
+            // --------FINALIZANDO AS VALIDAÇÕES-----------
+            
+            if (!isValido) {
+                JOptionPane.showMessageDialog(null,msgError.toString(), "Erro de Validação", JOptionPane.ERROR_MESSAGE);
+            } else{
+
+                //Instanciando a Classe Usuário para ter aceso aos dados
+                Usuario usuarioCadastro = new Usuario();
+
+                usuarioCadastro.setNome_usuario(nomeFonte);
+                usuarioCadastro.setEmail(emailFonte);
+                usuarioCadastro.setSenha(passFonte);
+
+                //Guardar isso no Usuário DAO
+
+                //Mostrar Mensagem de Sucesso
+                JOptionPane.showMessageDialog(null, "Cadastro efectuado com sucesso!", "Sucesso!", JOptionPane.PLAIN_MESSAGE);
+
+            }
+        });
        
         
 
