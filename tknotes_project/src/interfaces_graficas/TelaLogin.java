@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+//criando a tela de Login
 public class TelaLogin extends JanelaPrincipal{
     public TelaLogin(){
         /*--------(Configurando os Painéis)------ */
