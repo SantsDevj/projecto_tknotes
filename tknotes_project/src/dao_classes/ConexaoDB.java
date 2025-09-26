@@ -4,16 +4,24 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class ConexaoDB {
-    protected Connection connect;
+public final class ConexaoDB {
+
+    //Atributos  para a conexão
+    private static final String URL = "jdbc:mysql://localhost:3306/tknotes";
+    private static final String USER = "root";
+    private static final String PASS = "";
     
-    //Criando a conexão com a Base de Dados através do Constructor
-    public ConexaoDB(){
+    public static Connection criarConexao() throws SQLException{
         try {
-            this.connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/tknotes", "root", "");
+            Connection connect = DriverManager.getConnection(URL, USER, PASS);
             System.out.println("Conexão feita com sucesso!");
+            return connect;
         } catch (SQLException e) {
-            System.out.println("Erro ao estabelecer conexão com a base de Dados");
+            System.out.println("Erro ao estabelecer conexão com a base de Dados" + e.getMessage());
+            throw e;
         }
+
     }
+    
+
 }

@@ -2,7 +2,7 @@ package dao_classes;
 
 import java.sql.*;
 
-public class TarefaDAO extends ConexaoDB implements InterfaceDAO{
+public class TarefaDAO implements InterfaceDAO{
     
     //Métodos da Classe de Manipulação de Dados
     @Override

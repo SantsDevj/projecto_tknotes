@@ -21,6 +21,7 @@ import java.awt.Label;
 
 //Importando a Classe Usuário 
 import implementacao_classes.*;
+import dao_classes.*;
 
 public class TelaCadastro extends JanelaPrincipal{
     
@@ -273,6 +274,9 @@ public class TelaCadastro extends JanelaPrincipal{
                 usuarioCadastro.setNome_usuario(nomeFonte);
                 usuarioCadastro.setEmail(emailFonte);
                 usuarioCadastro.setSenha(passFonte);
+
+                //Armazenando os valores na base de dados
+                UsuarioDAO.adicionarUsuario(usuarioCadastro);
 
                 //Guardar isso no Usuário DAO
 
