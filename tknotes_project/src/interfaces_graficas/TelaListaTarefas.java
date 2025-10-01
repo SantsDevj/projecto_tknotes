@@ -36,7 +36,7 @@ public class TelaListaTarefas extends JanelaPrincipal{
 
         //Ícone da Imagem para topo do painel
 
-        ImageIcon topoPanelImg = new ImageIcon("projecto_tknotes/recursos_graficos/logo/logo_tknotes.png");
+        ImageIcon topoPanelImg = new ImageIcon("recursos_graficos/logo/logo_tknotes.png");
 
         Image imgTopo = topoPanelImg.getImage();
         Image resImg = imgTopo.getScaledInstance(70, 70, Image.SCALE_SMOOTH); //Imagem redimensionada
@@ -87,6 +87,11 @@ public class TelaListaTarefas extends JanelaPrincipal{
         criarButton.setForeground(Color.WHITE);
         criarButton.setPreferredSize(new Dimension(180, 40));
 
+        //Colocando evento para a Janela de Criação de Tarefas
+        criarButton.addActionListener(e -> {
+            
+        });
+
         //fazer botão para logout no sistema
 
         JButton logoutButton = new JButton("fazer logout");
@@ -110,25 +115,26 @@ public class TelaListaTarefas extends JanelaPrincipal{
 
         JPanel centerPanel = new JPanel();
 
-        centerPanel.setBackground(new Color(0x888888));
+        centerPanel.setBackground(new Color(0x888FFF));
         centerPanel.setPreferredSize(new Dimension(500, 500));
-        centerPanel.setLayout(new GridLayout(0,2,5,5));
+        centerPanel.setLayout(new GridLayout(0,1,5,5));
 
         // ------- CONFFIGURANDO OS ELEMENTOS DO CENTERPANEL -------
 
         //Label para mensagem se tarefa estiver vazia
 
-        JLabel voidLabel = new JLabel("Tarefa Vazia!");
+        JLabel infoLabel = new JLabel("Crie as suas Tarefas!");
 
         //configurações do voidLabel
-        voidLabel.setFont(new Font("verdana", Font.BOLD, 24));
-        voidLabel.setForeground(new Color(0xFFFFFF));
-        voidLabel.setVerticalAlignment(JLabel.CENTER);
-        voidLabel.setHorizontalAlignment(JLabel.CENTER);
+        infoLabel.setFont(new Font("verdana", Font.BOLD, 24));
+        infoLabel.setForeground(new Color(0xFFFFFF));
+        infoLabel.setVerticalAlignment(JLabel.CENTER);
+        infoLabel.setHorizontalAlignment(JLabel.CENTER);
+
         
         /*------------(Adicionando os elementos no painel central)-------------*/
 
-        centerPanel.add(voidLabel);
+        centerPanel.add(infoLabel);
 
         /*-----------------Adicionando elementos, na Janela da Tela de Lista de Tarefas--------------------*/
 
