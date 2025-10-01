@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Image;
 
 import javax.swing.BoxLayout;
@@ -35,7 +36,7 @@ public class TelaListaTarefas extends JanelaPrincipal{
 
         //Ícone da Imagem para topo do painel
 
-        ImageIcon topoPanelImg = new ImageIcon("recursos_graficos/logo/logo_tknotes.png");
+        ImageIcon topoPanelImg = new ImageIcon("projecto_tknotes/recursos_graficos/logo/logo_tknotes.png");
 
         Image imgTopo = topoPanelImg.getImage();
         Image resImg = imgTopo.getScaledInstance(70, 70, Image.SCALE_SMOOTH); //Imagem redimensionada
@@ -111,6 +112,9 @@ public class TelaListaTarefas extends JanelaPrincipal{
 
         centerPanel.setBackground(new Color(0x888888));
         centerPanel.setPreferredSize(new Dimension(500, 500));
+        centerPanel.setLayout(new GridLayout(0,2,5,5));
+
+        // ------- CONFFIGURANDO OS ELEMENTOS DO CENTERPANEL -------
 
         //Label para mensagem se tarefa estiver vazia
 

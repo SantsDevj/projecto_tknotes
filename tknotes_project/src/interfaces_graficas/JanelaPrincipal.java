@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 
 public class JanelaPrincipal extends JFrame{
     public JanelaPrincipal(){
-        ImageIcon image = new ImageIcon("recursos_graficos/logo/logo_tknotes.png");
+        ImageIcon image = new ImageIcon("projecto_tknotes/recursos_graficos/logo/logo_tknotes.png");
 
         this.setSize(900, 800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
