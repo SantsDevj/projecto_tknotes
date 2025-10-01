@@ -34,4 +34,34 @@ public class UsuarioDAO {
             System.err.print("Erro ao inserir os dados" + e.getMessage());
         }
     }
+
+    //Método para logar o usuário
+
+    public static String loginUsuario(String nome, String email){
+
+        //Instânciando a classe usuário
+        Usuario userConsulta = new Usuario();
+
+        //comando sql para a consulta e comparação
+        String sql = "SELECT nome_usuario, email FROM usuario WHERE nome_usuario = " + userConsulta.getNome_usuario();
+        try (Connection conexao = ConexaoDB.criarConexao();
+            PreparedStatement statement = conexao.prepareStatement(sql);
+        ) {
+            ResultSet res = statement.executeQuery(sql);
+            String nomeVal = ""; 
+            String emailVal = "";
+            while (res.next()) {
+                nomeVal = res.getString("nome");
+                emailVal = res.getString("email");
+            }
+
+            nome = nomeVal;
+            email = emailVal;
+
+        } catch (SQLException e) {
+            System.out.println("Erro ao obter elemento " + e.getMessage());
+        }
+        return nome + email;
+
+    } 
 }

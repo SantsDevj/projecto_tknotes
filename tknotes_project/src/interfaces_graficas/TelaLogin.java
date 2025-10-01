@@ -100,6 +100,12 @@ public class TelaLogin extends JanelaPrincipal{
         regbutton.setBackground(new Color(0x007BFF));
         regbutton.setForeground(Color.WHITE);
         regbutton.setFocusable(false);
+        regbutton.addActionListener(e ->{
+            //Colocando os eventos neste botão
+
+
+
+        });
 
        
         
@@ -119,4 +125,9 @@ public class TelaLogin extends JanelaPrincipal{
     
     }
 
+
+    public static void main(String[] args) {
+        TelaLogin tela = new TelaLogin();
+        tela.tornarVisivel();
+    }
 }

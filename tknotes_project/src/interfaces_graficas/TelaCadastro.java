@@ -204,6 +204,8 @@ public class TelaCadastro extends JanelaPrincipal{
         //Configurando o evento do botão cadastrar
 
         regbutton.addActionListener(e ->{
+            //Instanciando a Classe Usuário para ter aceso aos dados
+            Usuario usuarioCadastro = new Usuario();
 
             
             //Obtendo as fontes de cada um dos campos (nome, email e senha)
@@ -257,9 +259,24 @@ public class TelaCadastro extends JanelaPrincipal{
                 
                 //Validar senha
                 if (passFonte.length() < 6 || passFonte.length() > 8) {
-                    msgError.append("- A Senha deve ter no mínimo entre 6 a 8 caracteres");
+                    msgError.append("- A Senha deve ter no mínimo entre 6 a 8 caracteres\n");
                     isValido = false;
                 }
+
+                //Verificando se estes dados já existem foram inseridos
+                if (nomeFonte.equals(usuarioCadastro.getNome_usuario())) {
+                    msgError.append("- O nome do usuário já existe!");
+                }
+
+                if (emailFonte.equals(usuarioCadastro.getEmail())) {
+                    msgError.append("- A senha já existe já existe!");
+                }
+
+                if (passFonte.equals(usuarioCadastro.getSenha())) {
+                    msgError.append("- o nome do usuário já existe!");
+                }
+
+
             }
             
             // --------FINALIZANDO AS VALIDAÇÕES-----------
@@ -268,8 +285,6 @@ public class TelaCadastro extends JanelaPrincipal{
                 JOptionPane.showMessageDialog(null,msgError.toString(), "Erro de Validação", JOptionPane.ERROR_MESSAGE);
             } else{
 
-                //Instanciando a Classe Usuário para ter aceso aos dados
-                Usuario usuarioCadastro = new Usuario();
 
                 usuarioCadastro.setNome_usuario(nomeFonte);
                 usuarioCadastro.setEmail(emailFonte);
