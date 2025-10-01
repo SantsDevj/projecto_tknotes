@@ -1,7 +1,6 @@
 package implementacao_classes;
 import java.util.Date;
 
-import dao_classes.TarefaDAO;
 
 public class Tarefa {
 
