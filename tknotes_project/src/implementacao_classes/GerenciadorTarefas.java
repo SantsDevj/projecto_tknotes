@@ -4,10 +4,7 @@ import java.util.List;
 
 public class GerenciadorTarefas {
 
-    //Atributos desta classe
-    private List<Tarefa> lista_Tarefas;
-
-    //Métodos desta classe
+    //Métodos desta classe ou Service Layer
     public void criarTarefa(String titulo, String descricao, Date data_Vencimento, String categoria, String prioridade){
         
     }

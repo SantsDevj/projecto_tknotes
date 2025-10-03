@@ -297,7 +297,7 @@ public class TelaCadastro extends JanelaPrincipal{
 
                 //Mostrar Mensagem de Sucesso
                 JOptionPane.showMessageDialog(null, "Cadastro efectuado com sucesso!", "Sucesso!", JOptionPane.PLAIN_MESSAGE);
-
+                
             }
         });
        
