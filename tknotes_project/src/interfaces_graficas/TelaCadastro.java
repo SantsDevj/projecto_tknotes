@@ -167,7 +167,7 @@ public class TelaCadastro extends JanelaPrincipal{
         passpanel.setBackground(Color.WHITE);
         
         //preparando o campo para palavra-passe
-        JTextField passTextField = new JTextField("Senha");
+        JTextField passTextField = new JTextField("Palavra-passe");
         passTextField.setPreferredSize(new Dimension(300,40));
         passTextField.setForeground(Color.GRAY);
         passTextField.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1, true)); //serve para que a borda esteja arredondada
@@ -178,7 +178,7 @@ public class TelaCadastro extends JanelaPrincipal{
             @Override
             public void focusGained(java.awt.event.FocusEvent evt){
 
-                if (passTextField.getText().equals("Senha")) {
+                if (passTextField.getText().equals("Palavra-passe")) {
                     passTextField.setText("");
                     passTextField.setForeground(Color.BLACK);
                 }
@@ -187,7 +187,7 @@ public class TelaCadastro extends JanelaPrincipal{
             @Override
             public void focusLost(java.awt.event.FocusEvent evt){
                 if (passTextField.getText().isEmpty()) {
-                    passTextField.setText("Senha");
+                    passTextField.setText("Palavra-passe");
                     passTextField.setForeground(Color.GRAY);
                 }
             }

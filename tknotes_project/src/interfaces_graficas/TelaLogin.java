@@ -80,6 +80,27 @@ public class TelaLogin extends JanelaPrincipal{
         emailTextField.setPreferredSize(new Dimension(300,40));
         emailTextField.setForeground(Color.GRAY);
         emailTextField.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1, true)); //serve para que a borda esteja arredondada
+
+        //Tornando a UX melhor
+        emailTextField.addFocusListener(new FocusListener() {
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (emailTextField.getText().equals("Email")) {
+                    emailTextField.setText("");
+                    emailTextField.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (emailTextField.getText().equals("")) {
+                    emailTextField.setText("Email");
+                    emailTextField.setForeground(Color.gray);
+                }
+            }
+            
+        });
         emailpanel.add(emailTextField);
 
         //Campo para palavra-passe
@@ -88,10 +109,31 @@ public class TelaLogin extends JanelaPrincipal{
         passpanel.setBackground(Color.WHITE);
         
         //preparando o campo para palavra-passe
-        JTextField passTextField = new JTextField("Senha");
+        JTextField passTextField = new JTextField("Palavra-passe");
         passTextField.setPreferredSize(new Dimension(300,40));
         passTextField.setForeground(Color.GRAY);
         passTextField.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY,1, true)); //serve para que a borda esteja arredondada
+
+        //Tornando a UX melhor
+        passTextField.addFocusListener(new FocusListener() {
+
+            @Override
+            public void focusGained(FocusEvent e) {
+                if (passTextField.getText().equals("Palavra-passe")) {
+                    passTextField.setText("");
+                    passTextField.setForeground(Color.black);
+                }
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                if (passTextField.getText().equals("")) {
+                    passTextField.setText("Palavra-passe");
+                    passTextField.setForeground(Color.gray);
+                }
+            }
+            
+        });
         passpanel.add(passTextField);
 
         //Configurando Botão para cadastrar
@@ -103,11 +145,9 @@ public class TelaLogin extends JanelaPrincipal{
         regbutton.addActionListener(e ->{
             //Colocando os eventos neste botão
 
-
+            
 
         });
-
-       
         
 
         //Adicionando elementos no Painel 2

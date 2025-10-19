@@ -7,12 +7,14 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.util.concurrent.Flow;
 
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.plaf.basic.BasicScrollBarUI;
 
 public class TelaListaTarefas extends JanelaPrincipal{
     
@@ -62,57 +64,16 @@ public class TelaListaTarefas extends JanelaPrincipal{
         topoPainel.add(resImgLabel);
         topoPainel.add(taskLabel);
 
-
-
-        /*------------Adicionando o painel para o lado direito------------------*/
-
-        // Painel para a direita
-
-        JPanel dirPanel = new JPanel();
-
-        //Configurando o painel da direita
-
-        dirPanel.setBackground(new Color(0xF5F5F5F5));
-        dirPanel.setPreferredSize(new Dimension(200, 200));
-        dirPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
-
-        //Configurando os elementos do painel direito
-
-        //Botão de criar nova tarefa
-
-        JButton criarButton = new JButton("Criar Nova Tarefa");
-        criarButton.setVerticalAlignment(JButton.TOP);
-        criarButton.setBackground(new Color(0x007BFF));
-        criarButton.setFocusable(false);
-        criarButton.setForeground(Color.WHITE);
-        criarButton.setPreferredSize(new Dimension(180, 40));
-
-        //Colocando evento para a Janela de Criação de Tarefas
-        criarButton.addActionListener(e -> {
-            
-        });
-
-        //fazer botão para logout no sistema
-
-        JButton logoutButton = new JButton("fazer logout");
-        logoutButton.setVerticalAlignment(JButton.TOP);
-        logoutButton.setBackground(new Color(0x6C757D));
-        logoutButton.setFocusable(false);
-        logoutButton.setForeground(Color.WHITE);
-        logoutButton.setPreferredSize(new Dimension(180, 40));
-
-        /*------------(Adicionando os elementos no painel direito)-------------*/
-        dirPanel.add(criarButton);
-        dirPanel.add(logoutButton);
-
-
-        /*-----------Criando os paineis para cada tarefa --------------------*/
-
-
         /*------------Adicionando o painel na posição central ------------------*/
 
         //Configurando o painel
-
+        
+        //PAINEL PARA ELEMENTOS
+        JPanel elemPanel = new JPanel();
+        elemPanel.setLayout(new FlowLayout());
+        elemPanel.setPreferredSize(new Dimension(100,50));
+        
+        // PAINEL CENTRAL
         JPanel centerPanel = new JPanel();
 
         centerPanel.setBackground(new Color(0x888FFF));
@@ -132,14 +93,25 @@ public class TelaListaTarefas extends JanelaPrincipal{
         infoLabel.setHorizontalAlignment(JLabel.CENTER);
 
         
+        //Botão de criação de tarefas
+        
+        JButton  criarTarefa = new JButton("Criar nova tarefa");
+        
+        // -- configurando este botão
+        criarTarefa.setPreferredSize(new Dimension(50,30));
+        criarTarefa.setFocusable(false);
+        
+        //ADICIONANDO ELEMENTOS AO ELEMPANEL
+        elemPanel.add(infoLabel);
+        elemPanel.add(criarTarefa);
+        
         /*------------(Adicionando os elementos no painel central)-------------*/
-
-        centerPanel.add(infoLabel);
+        centerPanel.add(elemPanel);
+        
 
         /*-----------------Adicionando elementos, na Janela da Tela de Lista de Tarefas--------------------*/
 
         this.add(topoPainel, new BorderLayout().NORTH);
-        this.add(dirPanel, new BorderLayout().WEST);
         this.add(centerPanel, new BorderLayout().CENTER);
 
     }
