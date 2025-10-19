@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.Image;
 
 import javax.swing.BoxLayout;
@@ -86,6 +87,11 @@ public class TelaListaTarefas extends JanelaPrincipal{
         criarButton.setForeground(Color.WHITE);
         criarButton.setPreferredSize(new Dimension(180, 40));
 
+        //Colocando evento para a Janela de Criação de Tarefas
+        criarButton.addActionListener(e -> {
+            
+        });
+
         //fazer botão para logout no sistema
 
         JButton logoutButton = new JButton("fazer logout");
@@ -109,22 +115,26 @@ public class TelaListaTarefas extends JanelaPrincipal{
 
         JPanel centerPanel = new JPanel();
 
-        centerPanel.setBackground(new Color(0x888888));
+        centerPanel.setBackground(new Color(0x888FFF));
         centerPanel.setPreferredSize(new Dimension(500, 500));
+        centerPanel.setLayout(new GridLayout(0,1,5,5));
+
+        // ------- CONFFIGURANDO OS ELEMENTOS DO CENTERPANEL -------
 
         //Label para mensagem se tarefa estiver vazia
 
-        JLabel voidLabel = new JLabel("Tarefa Vazia!");
+        JLabel infoLabel = new JLabel("Crie as suas Tarefas!");
 
         //configurações do voidLabel
-        voidLabel.setFont(new Font("verdana", Font.BOLD, 24));
-        voidLabel.setForeground(new Color(0xFFFFFF));
-        voidLabel.setVerticalAlignment(JLabel.CENTER);
-        voidLabel.setHorizontalAlignment(JLabel.CENTER);
+        infoLabel.setFont(new Font("verdana", Font.BOLD, 24));
+        infoLabel.setForeground(new Color(0xFFFFFF));
+        infoLabel.setVerticalAlignment(JLabel.CENTER);
+        infoLabel.setHorizontalAlignment(JLabel.CENTER);
+
         
         /*------------(Adicionando os elementos no painel central)-------------*/
 
-        centerPanel.add(voidLabel);
+        centerPanel.add(infoLabel);
 
         /*-----------------Adicionando elementos, na Janela da Tela de Lista de Tarefas--------------------*/
 

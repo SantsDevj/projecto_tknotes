@@ -285,27 +285,36 @@ public class TelaCadastro extends JanelaPrincipal{
                 JOptionPane.showMessageDialog(null,msgError.toString(), "Erro de Validação", JOptionPane.ERROR_MESSAGE);
             } else{
 
-
                 usuarioCadastro.setNome_usuario(nomeFonte);
                 usuarioCadastro.setEmail(emailFonte);
                 usuarioCadastro.setSenha(passFonte);
 
                 //Armazenando os valores na base de dados
-                UsuarioDAO.adicionarUsuario(usuarioCadastro);
+                try{
+                    UsuarioDAO.adicionarUsuario(usuarioCadastro);
+    
+                    //Guardar isso no Usuário DAO
+    
+                    //Mostrar Mensagem de Sucesso
+                    JOptionPane.showMessageDialog(null, "Cadastro efectuado com sucesso!", "Sucesso!", JOptionPane.PLAIN_MESSAGE);
 
-                //Guardar isso no Usuário DAO
+                    //Abrindo nova Janela, a janela Principal
+                    TelaListaTarefas janela = new TelaListaTarefas();
+                    janela.tornarVisivel();
+                    this.dispose();
 
-                //Mostrar Mensagem de Sucesso
-                JOptionPane.showMessageDialog(null, "Cadastro efectuado com sucesso!", "Sucesso!", JOptionPane.PLAIN_MESSAGE);
-                
+                }catch(Exception ex){
+                    JOptionPane.showMessageDialog(null, "Erro ao inserir dados no Banco de Dados " + ex.getMessage(), "Erro de Sistema", JOptionPane.ERROR_MESSAGE);
+                }
+
             }
+
         });
        
         
 
         //Adicionando elementos no Painel 2
         panel2.add(titlelabel);
-        panel2.add(Box.createRigidArea(new Dimension(0,20))); //fixar espaço vertical
         panel2.add(namepanel);
         panel2.add(emailpanel);
         panel2.add(passpanel);
