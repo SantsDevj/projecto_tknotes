@@ -1,7 +1,5 @@
 package dao_classes;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.sql.*;
 
 import implementacao_classes.*;
@@ -35,33 +33,32 @@ public class UsuarioDAO {
         }
     }
 
-    //Método para logar o usuário
+    //Método para login do usuário
 
-    public static String loginUsuario(String nome, String email){
+    public boolean loginUsuario(String email, String passwrd){
+        boolean temConta = false; //Inicialização da variável que validará os dados
 
-        //Instânciando a classe usuário
-        Usuario userConsulta = new Usuario();
+        //comando sql para executar esta instrucção
 
-        //comando sql para a consulta e comparação
-        String sql = "SELECT nome_usuario, email FROM usuario WHERE nome_usuario = " + userConsulta.getNome_usuario();
-        try (Connection conexao = ConexaoDB.criarConexao();
-            PreparedStatement statement = conexao.prepareStatement(sql);
+        String sqlCommand = "SELECT email, senha FROM usuario WHERE email = ? AND senha = ?";
+
+        try (Connection connect = ConexaoDB.criarConexao();
+            PreparedStatement state = connect.prepareStatement(sqlCommand)
         ) {
-            ResultSet res = statement.executeQuery(sql);
-            String nomeVal = ""; 
-            String emailVal = "";
-            while (res.next()) {
-                nomeVal = res.getString("nome");
-                emailVal = res.getString("email");
+            state.setString(1, email);
+            state.setString(2, passwrd);
+
+            int linhasAfectadas = state.executeUpdate();
+            if (linhasAfectadas > 0) {
+                System.out.println("Consulta executada com sucesso!");
+                return temConta =  true;
+            } else{
+                System.out.println("Erro ao executar a consulta!");
             }
 
-            nome = nomeVal;
-            email = emailVal;
-
         } catch (SQLException e) {
-            System.out.println("Erro ao obter elemento " + e.getMessage());
+            e.getMessage();
         }
-        return nome + email;
-
-    } 
+        return temConta;
+    }
 }

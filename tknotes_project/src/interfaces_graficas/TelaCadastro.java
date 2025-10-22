@@ -263,20 +263,6 @@ public class TelaCadastro extends JanelaPrincipal{
                     isValido = false;
                 }
 
-                //Verificando se estes dados já existem foram inseridos
-                if (nomeFonte.equals(usuarioCadastro.getNome_usuario())) {
-                    msgError.append("- O nome do usuário já existe!");
-                }
-
-                if (emailFonte.equals(usuarioCadastro.getEmail())) {
-                    msgError.append("- A senha já existe já existe!");
-                }
-
-                if (passFonte.equals(usuarioCadastro.getSenha())) {
-                    msgError.append("- o nome do usuário já existe!");
-                }
-
-
             }
             
             // --------FINALIZANDO AS VALIDAÇÕES-----------

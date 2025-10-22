@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import implementacao_classes.Usuario;
+
 //criando a tela de Login
 public class TelaLogin extends JanelaPrincipal{
     public TelaLogin(){
@@ -145,7 +147,48 @@ public class TelaLogin extends JanelaPrincipal{
         regbutton.addActionListener(e ->{
             //Colocando os eventos neste botão
 
+            // PRIMEIRO: VALIDAR OS DADOS
+
+            //-- Obtendo os dados
+            String emailInserido = emailTextField.getText().trim();
+            String passwrdInserido = passTextField.getText().trim();
+
+            StringBuilder messError = new StringBuilder(); //Mensagens de erro1
+
+            //Validar os campos
+            boolean eValido =  true; //Flag para validar todos os campos
+            if (emailInserido.isEmpty() || emailInserido.equals("Email")) {
+                messError.append("- Erro! o campo 'Email' não pode estar vazio!\n");
+                eValido = false;
+            }
+            if (passwrdInserido.isEmpty() || emailInserido.equals("Palavra-passe")) {
+                messError.append("- Erro! o campo 'Palavra-passe' não pode estar vazio!\n");
+                eValido = false;
+            }
             
+            if (eValido) {
+                if (!emailInserido.contains("@") || !emailInserido.contains(".")) {
+                    messError.append("- Erro! Insira o '@' e o '.'\n");
+                    eValido = false;
+                }
+                if (passwrdInserido.length() < 6 || passwrdInserido.length() > 8) {
+                    messError.append("- Erro! a palavra-passe deve conter entre 6 a 8 caracteres");
+                    eValido = false;
+                }
+            }
+            if (!eValido) {
+                JOptionPane.showMessageDialog(null, messError.toString(), "Erro de Validação", JOptionPane.ERROR_MESSAGE);
+            } else{
+                Usuario loginUsuario = new Usuario();
+                loginUsuario.setEmail(emailInserido);
+                loginUsuario.setSenha(passwrdInserido);
+
+                try{
+
+                }catch(Exception e){
+                    e.getMessage();
+                }
+            }
 
         });
         
@@ -165,7 +208,7 @@ public class TelaLogin extends JanelaPrincipal{
     
     }
 
-
+    //Aplicando teste rápido
     public static void main(String[] args) {
         TelaLogin tela = new TelaLogin();
         tela.tornarVisivel();
