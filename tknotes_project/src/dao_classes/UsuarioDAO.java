@@ -2,6 +2,10 @@ package dao_classes;
 
 import java.sql.*;
 
+import javax.swing.JOptionPane;
+
+import com.mysql.cj.protocol.Resultset;
+
 import implementacao_classes.*;
 
 public class UsuarioDAO {
@@ -35,9 +39,8 @@ public class UsuarioDAO {
 
     //Método para login do usuário
 
-    public boolean loginUsuario(String email, String passwrd){
+    public static boolean loginUsuario(String email, String passwrd){
         boolean temConta = false; //Inicialização da variável que validará os dados
-
         //comando sql para executar esta instrucção
 
         String sqlCommand = "SELECT email, senha FROM usuario WHERE email = ? AND senha = ?";
@@ -48,16 +51,18 @@ public class UsuarioDAO {
             state.setString(1, email);
             state.setString(2, passwrd);
 
-            int linhasAfectadas = state.executeUpdate();
-            if (linhasAfectadas > 0) {
-                System.out.println("Consulta executada com sucesso!");
-                return temConta =  true;
-            } else{
-                System.out.println("Erro ao executar a consulta!");
+            try(ResultSet result = state.executeQuery()){
+                if (result.next()) {
+                    temConta = true;
+                    System.out.println("Dados presentes na base de dados!");
+                } else{
+                    temConta = false;
+                    System.out.println("Dados não encontrados!");
+                }
             }
-
+            
         } catch (SQLException e) {
-            e.getMessage();
+            System.out.println("Erro ao executar a consulta " + e.getMessage()); 
         }
         return temConta;
     }

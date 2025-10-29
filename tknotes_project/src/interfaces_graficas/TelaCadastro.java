@@ -285,7 +285,7 @@ public class TelaCadastro extends JanelaPrincipal{
                     JOptionPane.showMessageDialog(null, "Cadastro efectuado com sucesso!", "Sucesso!", JOptionPane.PLAIN_MESSAGE);
 
                     //Abrindo nova Janela, a janela Principal
-                    TelaListaTarefas janela = new TelaListaTarefas();
+                    TelaPrincipal janela = new TelaPrincipal();
                     janela.tornarVisivel();
                     this.dispose();
 

@@ -14,7 +14,6 @@ public final class ConexaoDB {
     public static Connection criarConexao() throws SQLException{
         try {
             Connection connect = DriverManager.getConnection(URL, USER, PASS);
-            System.out.println("Conexão feita com sucesso!");
             return connect;
         } catch (SQLException e) {
             System.out.println("Erro ao estabelecer conexão com a base de Dados" + e.getMessage());

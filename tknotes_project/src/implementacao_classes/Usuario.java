@@ -1,4 +1,7 @@
 package implementacao_classes;
+
+import dao_classes.UsuarioDAO;
+
 public class Usuario {
 
     //Atributos desta classe
@@ -32,5 +35,4 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-
 }

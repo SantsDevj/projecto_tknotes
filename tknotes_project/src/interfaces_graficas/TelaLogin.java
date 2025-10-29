@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import dao_classes.UsuarioDAO;
 import implementacao_classes.Usuario;
 
 //criando a tela de Login
@@ -183,10 +184,21 @@ public class TelaLogin extends JanelaPrincipal{
                 loginUsuario.setEmail(emailInserido);
                 loginUsuario.setSenha(passwrdInserido);
 
+                if(UsuarioDAO.loginUsuario(emailInserido, passwrdInserido) == true){
+                    JOptionPane.showMessageDialog(null, "Seja Bem-vindo de Volta!", "Confirmação de Login",JOptionPane.PLAIN_MESSAGE );
+
+                    //Abrindo a Janela Principal
+                    TelaPrincipal newTela = new TelaPrincipal();
+                    newTela.tornarVisivel();
+                    this.dispose();
+                } else{
+                    JOptionPane.showMessageDialog(null, "Esses dados não existem!", "Confirmação de Login", JOptionPane.ERROR_MESSAGE);
+                }
+
                 try{
 
-                }catch(Exception e){
-                    e.getMessage();
+                }catch(Exception excep){
+                    excep.getMessage();
                 }
             }
 
